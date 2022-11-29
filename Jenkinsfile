@@ -45,6 +45,12 @@ pipeline{
                 }
             }
         }
+        stage("Sonarqube Analysis"){
+            steps{
+                echo "====++++executing Sonarqube Analysis++++===="
+                withSonarQubeEnv('SonarQube') {
+                sh 'mvn sonar:sonar'
+            }
         stage("Deploy"){
             steps{
                 echo "====++++executing Deploy++++===="
